@@ -1,0 +1,99 @@
+<!-- Heading -->
+<div class="card mb-4 wow fadeIn">
+
+  <!--Card content-->
+  <div class="card-body d-sm-flex justify-content-between">
+
+    <h4 class="mb-sm-0 pt-3">
+      <a  >Home Page</a>
+      <span>/</span>
+      <span>Dashboard</span>
+    </h4>
+
+  </div>
+
+</div>
+<!-- Heading -->
+
+<!-- Loader -->
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
+
+<!-- Loader -->
+<!-- File Upload  -->
+<br>
+<br>
+
+<!-- Upload the file   style="margin-left: 10%"-->
+<label> <h5> Load the Temperature Sensor file : </h5></label>
+<div  style="margin-left: 10%"> 
+
+  <input id="cin" name="cin" type="file"  class="form-control" style="width:50%"  (change)="fileChangeEvent($event)" placeholder="Upload a file" multiple/>
+  <!-- // button -->
+  <br>
+  <button type="button" class="btn btn-success btn-s" (click)= "upload()" >
+    <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
+  </button>
+</div>
+<!-- File Upload -->
+<br>
+<br>
+<br>
+<!--Grid row-->
+<div  *ngIf = "showTable">
+<label><h5> Result - </h5></label>
+
+<div class="row wow fadeIn">
+
+  <!--Grid column-->
+  <div class="col-md-10 mb-4">
+
+    <!--Card-->
+    <div class="card">
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!-- Table  -->
+        <table class="table table-hover">
+          <!-- Table head -->
+          <thead class="blue-grey lighten-4">
+            <tr>
+              <th>#</th>
+              <th>Temperature Sensor</th>
+              <th>Value</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <!-- Table head -->
+
+          <!-- Table body -->
+          <tbody>
+            <tr  *ngFor = "let data of responseData | paginate: {itemsPerPage:20 , currentPage: p}; let a = index">
+              <td scope="row">{{a+1}}</td>
+              <td>{{data.ts}}</td>
+              <td>{{data.val}}</td>
+              <td>{{data.year}}</td>
+            </tr>
+            
+          </tbody>
+          <!-- Table body -->
+        </table>
+        <div class = "text-center">
+
+        <pagination-controls class = "my-pagination" (pageChange)="p = $event"></pagination-controls>
+        <!-- Table  -->
+      </div>
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+</div>
+
+</div>
+<!--Grid row-->
+
