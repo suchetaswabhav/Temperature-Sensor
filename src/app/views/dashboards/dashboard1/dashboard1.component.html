@@ -69,7 +69,7 @@
           <!-- Table body -->
           <tbody>
             <tr  *ngFor = "let data of responseData | paginate: {itemsPerPage:20 , currentPage: p}; let a = index">
-              <td scope="row">{{a+1}}</td>
+              <td scope="row">{{data.id}}</td>
               <td>{{data.ts}}</td>
               <td>{{data.val}}</td>
               <td>{{data.year}}</td>

@@ -3,6 +3,11 @@ var Q = require('q');
 var obj = {};
 var responseData = [];
 
+/**
+ * @author Suchheta Shrivastav
+ * @description: function to know the thermometer temperature of a one year-time span.
+ */
+
 var myModuleJSON = {
     defineRoutes: async function (router, filePath) {
         var deferred = Q.defer();
@@ -11,15 +16,18 @@ var myModuleJSON = {
 
         responseData = [];
 
-        const map = new Map();
-        for (const item of obj) {
-            var year = new Date(item.ts).getFullYear()
-            if (!map.has(year)) {
-                map.set(year, true);    // set any value to Map
+
+        var timespan = new Date(obj[0].ts).getFullYear()
+
+        for (var i = 0; i < obj.length; i++) {
+            var yearValue = new Date(obj[i].ts).getFullYear()
+            if (yearValue == timespan) {
+
                 responseData.push({
-                    ts: item.ts,
-                    val: item.val,
-                    year: year
+                    id: i+1,
+                    ts: new Date(obj[i].ts),
+                    val: obj[i].val,
+                    year: yearValue
                 });
             }
         }

@@ -11,6 +11,11 @@ import { map } from 'rxjs/operators';
   templateUrl: './dashboard1.component.html',
   styleUrls: ['./dashboard1.component.scss']
 })
+
+/**
+ * @author Suchheta Shrivastav
+ * @description: Component to know the thermometer temperature of a one year-time span.
+ */
 export class Dashboard1Component implements OnInit {
   p: number = 1;
   checkFileName: string
@@ -73,7 +78,7 @@ export class Dashboard1Component implements OnInit {
           var info = res;
           for (var i = 0; i < info.length; i++) {
 
-            this.responseData.push({ 'ts': info[i].ts, 'val': info[i].val, 'year': info[i].year })
+            this.responseData.push({ id:info[i].id,'ts': info[i].ts, 'val': info[i].val, 'year': info[i].year })
           }
           this.showTable = true;
           this. loading= false; 
