@@ -20,10 +20,10 @@ angular version - above angular 7
   
 [5] Open two more terminals with ending  -> **/Temperature-Sensor-master>**
 
-    [a] In one terminal , run command -> **npm start**
+    [a] In one terminal , run command -> npm start
         Please wait till it compiles successfully.
         
-    [b] In other terminal, run command -> **node app-server.js**
+    [b] In other terminal, run command -> node app-server.js
        Please wait till you get ->Listening on port 3003..;
     
 [6] Open your browser and type -> **localhost:4200**
